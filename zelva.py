@@ -13,7 +13,6 @@ circle = turtle.Turtle()
 circle.shape("circle")
 circle.pencolor("green")
 
-circle.left(90)
 circle.penup()
 circle.goto(300, -300)
 
@@ -34,7 +33,6 @@ triangle.left(90)
 triangle.goto(-300, -300)
 
 circle.goto(300, 200)
-circle.right(90)
 circle.pendown()
 circle.circle(25)
 

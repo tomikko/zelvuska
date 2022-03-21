@@ -1,106 +1,82 @@
 import turtle
 import random
-
 triangle = turtle.Turtle()
 triangle.shape("triangle")
-triangle.pencolor("brown")
-
-triangle.left(90)
-triangle.penup()
+triangle.pen(pencolor = "brown", fillcolor = "brown")
+triangle.lt(90)
+triangle.pu()
 triangle.goto(-300, -300)
-
-circle = turtle.Turtle()
+circle = triangle.clone()
 circle.shape("circle")
-circle.pencolor("green")
-
-circle.penup()
+circle.pen(pencolor = "green", fillcolor = "green")
+circle.pu()
 circle.goto(300, -300)
-
 triangle.goto(-300, 200)
-triangle.pendown()
-triangle.right(90)
-triangle.forward(25)
 
-for i in range(2):
-    triangle.left(120)
-    triangle.forward(50)
+triangle.pd()
+triangle.rt(90)
+triangle.fd(25)
+for i in 1,2:
+    triangle.lt(120)
+    triangle.fd(50)
+triangle.lt(120)
+triangle.fd(25)
+triangle.pu()
 
-triangle.left(120)
-triangle.forward(25)
-
-triangle.penup()
-triangle.left(90)
+triangle.lt(90)
 triangle.goto(-300, -300)
-
-circle.goto(300, 200)
-circle.pendown()
+circle.goto(300, 225)
+circle.pd()
 circle.circle(25)
-
-circle.penup()
-circle.left(90)
-circle.goto(300, -300)
-
+circle.pu()
+circle.lt(90)
+circle.fd(25)
+circle.rt(90)
+circle.goto(275, -300)
 print("Begin!")
-die = [1, 2, 3, 4, 5, 6]
+die = [1,2,3,4,5,6]
 
 while True:
-    tri_y = triangle.ycor()
-    cir_y = circle.ycor()
-
-    if tri_y >= 200:
-        print("\nTriangle wins!")
-
-        triangle.fillcolor("yellow")
-        triangle.pendown()
+    if triangle.ycor() >= 200:
+        print("Triangle wins!")
+        if triangle.ycor() > 200:
+            triangle.setpos(-300, 200)
+        triangle.pd
         triangle.begin_fill()
-        triangle.right(90)
-        triangle.forward(25)
-
-        for j in range(2):
-            triangle.left(120)
-            triangle.forward(50)
-
-        triangle.left(120)
-        triangle.forward(25)
+        triangle.rt(90)
+        triangle.fd(25)
+        for i in 1,2:
+            triangle.lt(120)
+            triangle.fd(50)
+        triangle.lt(120)
+        triangle.fd(25)
         triangle.end_fill()
+        triangle.lt(90)
+        triangle.hideturtle()
         break
-
-    if cir_y >= 200:
-        print("\nCircle wins\n")
-
-        circle.right(90)
-
-        circle.fillcolor("yellow")
-        circle.pendown()
+    if circle.ycor() >= 200:
+        print("Circle wins")
+        if circle.ycor() > 200:
+            circle.setpos(300, 225)
+        circle.pd
         circle.begin_fill()
         circle.circle(25)
         circle.end_fill()
+        circle.hideturtle()
         break
-
-    print("\n\nTriangle's turn:")
-    input("Press Enter to roll the die\n")
-
+print("Triangle's turn: ")
+    input("Press Enter to roll the die")
     die_outcome = random.choice(die)
-    tri_steps = 20 * die_outcome
-    tri_num = (tri_y + tri_steps) - 200
-    tri_neumimvymysletnazvyprostepresah = (tri_num / abs(tri_num) + 1) / 2 * tri_num
-
     print("The result of the die roll is: ")
     print(die_outcome)
-    print("\nThe number of steps will be:")
-    print(tri_steps)
-    triangle.forward(tri_steps - tri_neumimvymysletnazvyprostepresah)
-
-    print("\nCircle's turn:")
-    input("Press Enter to roll the die\n")
-
+    print("The number of steps will be: ")
+    print(20die_outcome)
+    triangle.fd(20die_outcome)
+    print("Circle's turn: ")
+    input("Press Enter to roll the die")
     die_outcome = random.choice(die)
-    cir_steps = 20 * die_outcome
-    cir_num = (cir_y + cir_steps) - 200
-    cir_neumimvymysletnazvyprostepresah = (cir_num / abs(cir_num) + 1) / 2 * cir_num
-
     print("The result of the die roll is: ")
     print(die_outcome)
-    print("\nThe number of steps will be: ")
-    print(cir_steps)
-    circle.forward(cir_steps - cir_neumimvymysletnazvyprostepresah)
+    print("The number of steps will be: ")
+    print(20die_outcome)
+    circle.fd(20die_outcome)

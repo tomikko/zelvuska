@@ -1,101 +1,78 @@
 import turtle
 import random
+t = turtle.Turtle()
+screen = turtle.getscreen()
+t.speed(30)
 
-triangle = turtle.Turtle()
-triangle.shape("triangle")
-triangle.pen(pencolor="brown", fillcolor="brown")
-triangle.lt(90)
-triangle.pu()
-triangle.goto(-300, -300)
+sirka = 30
+vyska = 100
+def kniha(sirka,vyska):
+    for i in range(2):
+        t.fd(sirka)
+        t.lt(90)
+        t.fd(vyska)
+        t.lt(90)
 
-circle = turtle.Turtle()
-circle.shape("circle")
-circle.pen(pencolor="green", fillcolor="green")
-circle.lt(90)
-circle.pu()
-circle.goto(300, -300)
+def shelf():
+    for i in range(2):
+        t.fd(400)
+        t.lt(90)
+        t.fd(100)
+        t.lt(90)
 
-triangle.goto(-300, 200)
-triangle.pd()
-triangle.rt(90)
-triangle.fd(25)
+def line():
+    t.fd(600)
 
-for i in range(2):
-    triangle.lt(120)
-    triangle.fd(50)
+t.pu()
+t.goto(-200, -300)
+t.lt(90)
+t.pd()
+line()
+t.pu()
+t.goto(200, -300)
+t.pd()
+line()
+t.pu()
+t.goto(-200, -200)
+t.pd()
 
-triangle.lt(120)
-triangle.fd(25)
-triangle.pu()
-triangle.lt(90)
-triangle.goto(-300, -300)
+for i in range(4):
+    t.rt(90)
+    shelf()
+    t.lt(90)
+    t.fd(100)
 
-circle.goto(300, 225)
-circle.pd()
-circle.circle(25)
-circle.pu()
-circle.lt(90)
-circle.fd(25)
-circle.rt(90)
-circle.goto(275, -300)
+min_width = 20
+max_width = 30
+min_height = 60
+max_height = 80
 
-print("Begin!")
-die = [1, 2, 3, 4, 5, 6]
 
-while True:
-    if triangle.ycor() >= 200:
-        print("Triangle wins!")
+def book():
+    width = random.randint(min_width, max_width)
+    height = random.randint(min_height, max_height)
+    for i in range(2):
+        t.fd(width)
+        t.lt(90)
+        t.fd(height)
+        t.lt(90)
 
-        if triangle.ycor() > 200:
-            triangle.setpos(-300, 200)
+    t.fd(width)
 
-        triangle.pd()
-        triangle.begin_fill()
-        triangle.rt(90)
-        triangle.fd(25)
+t.rt(90)
+t.fd(10)
+t.speed(0)
 
-        for i in range(2):
-            triangle.lt(120)
-            triangle.fd(50)
+t.screen.colormode(255)
+def color():
+    R = random.randint(0, 255)
+    B = random.randint(0, 255)
+    G = random.randint(0, 255)
 
-        triangle.lt(120)
-        triangle.fd(25)
-        triangle.lt(90)
+    turtle.fillcolor(R, G, B)
 
-        triangle.end_fill()
-        triangle.hideturtle()
-        break
-
-    if circle.ycor() >= 200:
-        print("Circle wins")
-
-        if circle.ycor() > 200:
-            circle.setpos(300, 225)
-
-        circle.pd()
-        circle.begin_fill()
-        circle.circle(25)
-
-        circle.end_fill()
-        circle.hideturtle()
-        break
-
-    print("Triangle's turn: ")
-    input("Press Enter to roll the die")
-    die_outcome = random.choice(die)
-
-    print("The result of the die roll is: ")
-    print(die_outcome)
-    print("The number of steps will be: ")
-    print(20 * die_outcome)
-    triangle.fd(20 * die_outcome)
-
-    print("Circle's turn: ")
-    input("Press Enter to roll the die")
-    die_outcome = random.choice(die)
-
-    print("The result of the die roll is: ")
-    print(die_outcome)
-    print("The number of steps will be: ")
-    print(20 * die_outcome)
-    circle.fd(20 * die_outcome)
+for i in range(10):
+    t.begin_fill()
+    color()
+    book()
+    t.end_fill()

@@ -48,7 +48,7 @@ def color():
 
 
 t = turtle.Turtle()
-screen = turtle.Screen()
+screen = t.getscreen()
 screen.colormode(255)
 t.speed(30)
 
